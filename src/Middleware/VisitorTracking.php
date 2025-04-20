@@ -12,8 +12,33 @@ class VisitorTracking
     public function handle(Request $request, Closure $next)
     {
         $ip = $request->ip();
-        $location = Http::get("https://ipinfo.io/{$ip}/json")->json();
+        if (in_array($ip, ['127.0.0.1', '::1'])) {
+            $location = [
+                'country' => 'Local',
+                'region' => 'Local',
+                'city' => 'Localhost',
+            ];
+        } else {
+            try {
+                $location = Http::get("https://ipinfo.io/{$ip}/json")->json();
+            } catch (\Exception $e) {
+                $location = [];
+            }
+        }
+
         $userAgent = $request->userAgent();
+
+        $response = $next($request);
+
+        $pageTitle = null;
+        if (
+            $response instanceof \Illuminate\Http\Response &&
+            str_contains($response->headers->get('Content-Type'), 'text/html')
+        ) {
+            $content = $response->getContent();
+            preg_match('/<title>(.*?)<\/title>/', $content, $matches);
+            $pageTitle = $matches[1] ?? null;
+        }
 
         Visitor::create([
             'ip' => $ip,
@@ -23,11 +48,13 @@ class VisitorTracking
             'device' => $this->detectDevice($userAgent),
             'os' => $this->detectOS($userAgent),
             'browser' => $this->detectBrowser($userAgent),
+            'page_title' => $pageTitle,
             'url' => $request->fullUrl(),
         ]);
 
-        return $next($request);
+        return $response;
     }
+
 
     protected function detectDevice($userAgent): string
     {

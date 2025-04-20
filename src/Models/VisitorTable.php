@@ -4,8 +4,10 @@ namespace MonishRoy\VisitorTracking\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Visitor extends Model
+class VisitorTable extends Model
 {
+    protected $table = 'visitors';
+
     protected $fillable = [
         'ip',
         'country',
@@ -14,6 +16,7 @@ class Visitor extends Model
         'device',
         'os',
         'browser',
+        'page_title',
         'url'
     ];
 }

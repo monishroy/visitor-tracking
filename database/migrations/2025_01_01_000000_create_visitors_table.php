@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('device')->nullable();
             $table->string('os')->nullable();
             $table->string('browser')->nullable();
+            $table->string('page_title')->nullable();
             $table->string('url')->nullable();
             $table->timestamps();
         });

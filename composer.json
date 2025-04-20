@@ -1,6 +1,6 @@
 {
   "name": "monishroy/visitor-tracking",
-  "description": "A Laravel package for tracking website visitors",
+  "description": "A Laravel package for tracking website visitors. all infomation get visitor data",
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -15,7 +15,7 @@
       "MonishRoy\\VisitorTracking\\": "src/"
     },
     "files": [
-      "src/Helpers/VisitorHelper.php"
+      "src/Helpers/Visitor.php"
     ]
   },
   "extra": {
