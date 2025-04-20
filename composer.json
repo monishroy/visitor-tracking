@@ -1,6 +1,6 @@
 {
   "name": "monishroy/visitor-tracking",
-  "description": "A Laravel package for tracking website visitors. all infomation get visitor data",
+  "description": "A Laravel package for tracking website visitors",
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -35,7 +35,8 @@
     "visitor tracking",
     "tracking",
     "visitor counter",
-    "laravel visitor tracking"
+    "laravel visitor tracking",
+    "user visitor tracking"
   ],
   "homepage": "https://github.com/monishroy/visitor-tracking",
   "repository": {
