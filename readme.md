@@ -25,7 +25,7 @@ The `monishroy/visitor-tracking` package provides a simple way to track and anal
 The package provides a `Visitor` facade to access visitor tracking data. You can use the following methods to retrieve analytics:
 
 ```php
-use Monishroy\VisitorTracking\Facades\Visitor;
+use MonishRoy\VisitorTracking\Helpers\Visitor;
 
 Visitor::totalVisitors(),     // Returns the total number of visitors
 Visitor::uniqueVisitors(),    // Returns the count of unique visitors
