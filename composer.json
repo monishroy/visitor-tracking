@@ -1,0 +1,26 @@
+{
+  "name": "monishroy/visitor-tracking",
+  "description": "Visitor tracking package for Laravel",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "MonishRoy\\VisitorTracking\\": "src/"
+    },
+    "files": [
+      "src/Helpers/VisitorHelper.php"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "MonishRoy\\VisitorTracking\\VisitorTrackingServiceProvider"
+      ]
+    }
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "./packages/monishroy/visitor-tracking"
+    }
+  ]
+}
