@@ -5,7 +5,7 @@ namespace MonishRoy\VisitorTracking\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use MonishRoy\VisitorTracking\Models\Visitor;
+use MonishRoy\VisitorTracking\Models\VisitorTable;
 
 class VisitorTracking
 {
@@ -40,7 +40,7 @@ class VisitorTracking
             $pageTitle = $matches[1] ?? null;
         }
 
-        Visitor::create([
+        VisitorTable::create([
             'ip' => $ip,
             'country' => $location['country'] ?? null,
             'region' => $location['region'] ?? null,
