@@ -69,8 +69,8 @@ Running the above code will dump the visitor data, which might look like this (e
 
 ## Requirements
 
-- PHP >= 7.4
-- Laravel >= 5.0
+- PHP >= 8.2
+- Laravel >= 10.0
 
 ## License
 
