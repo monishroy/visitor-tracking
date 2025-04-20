@@ -9,6 +9,7 @@
       "email": "monishroy87@gmail.com"
     }
   ],
+  "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
       "MonishRoy\\VisitorTracking\\": "src/"
