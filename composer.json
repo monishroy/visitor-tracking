@@ -20,12 +20,11 @@
   },
   "authors": [
     {
-      "name": "Md Sagor Hossain",
-      "email": "sagorhassain4@gmail.com"
+      "name": "Monish Roy",
+      "email": "monishroy87@gmail.com"
     }
   ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
+  "minimum-stability": "stable",
   "keywords": [
     "laravel",
     "tracking",
