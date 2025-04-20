@@ -10,12 +10,32 @@
       "src/Helpers/VisitorHelper.php"
     ]
   },
+  "license": "MIT",
   "extra": {
     "laravel": {
       "providers": [
         "MonishRoy\\VisitorTracking\\VisitorTrackingServiceProvider"
       ]
     }
+  },
+  "authors": [
+    {
+      "name": "Md Sagor Hossain",
+      "email": "sagorhassain4@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "keywords": [
+    "laravel",
+    "tracking",
+    "visitor",
+    "user tracking",
+    "laravel visitor tracking"
+  ],
+  "homepage": "https://github.com/monishroy/visitor-tracking",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monishroy/visitor-tracking"
   },
   "repositories": [
     {
