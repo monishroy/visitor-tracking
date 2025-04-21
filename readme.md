@@ -51,12 +51,13 @@ The package provides a `Visitor` facade to access visitor tracking data. You can
 
 ```php
 use Monishroy\VisitorTracking\Helpers\Visitor;
-    Visitor::totalVisitors(),      // Returns the total number of visitors
-    Visitor::uniqueVisitors(),    // Returns the count of unique visitors
-    Visitor::topVisitedPages(),   // Returns the most visited pages
-    Visitor::countries(),         // Returns visitor countries
-    Visitor::os(),                // Returns operating systems used by visitors
-    Visitor::devices()            // Returns devices used by visitors
+
+Visitor::totalVisitors(),      // Returns the total number of visitors
+Visitor::uniqueVisitors(),    // Returns the count of unique visitors
+Visitor::topVisitedPages(),   // Returns the most visited pages
+Visitor::countries(),         // Returns visitor countries
+Visitor::os(),                // Returns operating systems used by visitors
+Visitor::devices()            // Returns devices used by visitors
 ```
 
 ### Example Output
@@ -108,23 +109,6 @@ foreach ($visitors as $visitor) {
 ```
 
 You can also extend the `VisitorTable` model to add custom methods or relationships.
-
-### Using the Visitor Helper
-
-The package provides a `Visitor` helper function for quick access to visitor tracking methods without needing to use the facade. Ensure the helper is registered in your application (typically done automatically by the package).
-
-#### Example: Using the Helper
-
-```php
-    visitor()->totalVisitors(),     // Returns the total number of visitors
-    visitor()->uniqueVisitors(),    // Returns the count of unique visitors
-    visitor()->topVisitedPages(),   // Returns the most visited pages
-    visitor()->countries(),         // Returns visitor countries
-    visitor()->os(),                // Returns operating systems used by visitors
-    visitor()->devices()            // Returns devices used by visitors
-```
-
-The helper provides the same functionality as the `Visitor` facade but with a more concise syntax.
 
 ## Requirements
 
