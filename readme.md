@@ -20,20 +20,43 @@ The `monishroy/visitor-tracking` package provides a simple way to track and anal
    php artisan migrate
    ```
 
+## Middleware
+
+The package includes a middleware aliased as `visitor_tracking` to track visitor data for specific routes. To use it, apply the middleware to your routes.
+
+### Applying the Middleware
+
+You can apply the `visitor_tracking` middleware to individual routes or route groups in your `web.php` or `api.php` files.
+
+#### Example: Single Route
+
+```php
+Route::get('/home', [HomeController::class, 'index'])->middleware('visitor_tracking');
+```
+
+#### Example: Route Group
+
+```php
+Route::middleware(['visitor_tracking'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index']);
+    Route::get('/about', [AboutController::class, 'index']);
+});
+```
+
+The middleware will automatically track visitor data for the routes it is applied to.
+
 ## Usage
 
 The package provides a `Visitor` facade to access visitor tracking data. You can use the following methods to retrieve analytics:
 
 ```php
-use MonishRoy\VisitorTracking\Helpers\Visitor;
-
-Visitor::totalVisitors(),     // Returns the total number of visitors
-Visitor::uniqueVisitors(),    // Returns the count of unique visitors
-Visitor::topVisitedPages(),   // Returns the most visited pages
-Visitor::countries(),         // Returns visitor countries
-Visitor::os(),                // Returns operating systems used by visitors
-Visitor::devices()            // Returns devices used by visitors
-
+use Monishroy\VisitorTracking\Helpers\Visitor;
+    Visitor::totalVisitors(),      // Returns the total number of visitors
+    Visitor::uniqueVisitors(),    // Returns the count of unique visitors
+    Visitor::topVisitedPages(),   // Returns the most visited pages
+    Visitor::countries(),         // Returns visitor countries
+    Visitor::os(),                // Returns operating systems used by visitors
+    Visitor::devices()            // Returns devices used by visitors
 ```
 
 ### Example Output
@@ -50,9 +73,9 @@ Running the above code will dump the visitor data, which might look like this (e
         "/contact" => 200
     ],
     "countries" => [
-        "USA" => 400,
-        "India" => 300,
-        "Bangladesh" => 100
+        "US" => 400,
+        "IN" => 300,
+        "BD" => 100
     ],
     "os" => [
         "Windows" => 600,
@@ -67,15 +90,51 @@ Running the above code will dump the visitor data, which might look like this (e
 ]
 ```
 
+## Customization
+
+### Using the VisitorTable Model
+
+The package includes a `VisitorTable` model that you can use to interact directly with the visitor tracking database table. This allows you to perform custom queries or extend the functionality.
+
+#### Example: Querying Visitor Data
+
+```php
+use Monishroy\VisitorTracking\Models\VisitorTable;
+
+$visitors = VisitorTable::where('country', 'USA')->get();
+foreach ($visitors as $visitor) {
+    echo $visitor->page . ' visited from ' . $visitor->country;
+}
+```
+
+You can also extend the `VisitorTable` model to add custom methods or relationships.
+
+### Using the Visitor Helper
+
+The package provides a `Visitor` helper function for quick access to visitor tracking methods without needing to use the facade. Ensure the helper is registered in your application (typically done automatically by the package).
+
+#### Example: Using the Helper
+
+```php
+    visitor()->totalVisitors(),     // Returns the total number of visitors
+    visitor()->uniqueVisitors(),    // Returns the count of unique visitors
+    visitor()->topVisitedPages(),   // Returns the most visited pages
+    visitor()->countries(),         // Returns visitor countries
+    visitor()->os(),                // Returns operating systems used by visitors
+    visitor()->devices()            // Returns devices used by visitors
+```
+
+The helper provides the same functionality as the `Visitor` facade but with a more concise syntax.
+
 ## Requirements
 
-- PHP >= 8.2
-- Laravel >= 10.0
+- PHP &gt;= 8.2
+- Laravel &gt;= 10.0
 
 ## License
 
-This package is open-sourced software licensed under the [MIT license](LICENSE).
+This package is open-sourced software licensed under the MIT license.
 
 ## Support
 
-For issues or feature requests, please open an issue on the [GitHub repository](https://github.com/monishroy/visitor-tracking).
+For issues or feature requests, please open an issue on the GitHub repository.
