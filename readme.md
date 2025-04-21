@@ -52,7 +52,7 @@ The package provides a `Visitor` facade to access visitor tracking data. You can
 ```php
 use Monishroy\VisitorTracking\Helpers\Visitor;
 
-Visitor::totalVisitors(),      // Returns the total number of visitors
+Visitor::totalVisitors(),     // Returns the total number of visitors
 Visitor::uniqueVisitors(),    // Returns the count of unique visitors
 Visitor::topVisitedPages(),   // Returns the most visited pages
 Visitor::countries(),         // Returns visitor countries
@@ -102,7 +102,7 @@ The package includes a `VisitorTable` model that you can use to interact directl
 ```php
 use Monishroy\VisitorTracking\Models\VisitorTable;
 
-$visitors = VisitorTable::where('country', 'USA')->get();
+$visitors = VisitorTable::where('country', 'US')->get();
 foreach ($visitors as $visitor) {
     echo $visitor->page . ' visited from ' . $visitor->country;
 }
