@@ -54,7 +54,7 @@ use Monishroy\VisitorTracking\Helpers\Visitor;
 
 Visitor::totalVisitors(),     // Returns the total number of visitors
 Visitor::uniqueVisitors(),    // Returns the count of unique visitors
-Visitor::topVisitedPages(),   // Returns the most visited pages
+Visitor::topVisitedPages($limit),   // Returns the most visited pages $limit = 5 default
 Visitor::countries(),         // Returns visitor countries
 Visitor::os(),                // Returns operating systems used by visitors
 Visitor::devices()            // Returns devices used by visitors
@@ -69,9 +69,16 @@ Running the above code will dump the visitor data, which might look like this (e
     "totalVisitors" => 1000,
     "uniqueVisitors" => 750,
     "topVisitedPages" => [
-        "/home" => 500,
-        "/about" => 300,
-        "/contact" => 200
+        [
+            'page_title' => 'Home',
+            'url' => 'https://example.com'
+        ],[
+            'page_title' => 'About',
+            'url' => 'https://example.com/about'
+        ],[
+            'page_title' => 'Contact',
+            'url' => 'https://example.com/contact'
+        ],
     ],
     "countries" => [
         "US" => 400,
@@ -112,8 +119,8 @@ You can also extend the `VisitorTable` model to add custom methods or relationsh
 
 ## Requirements
 
-- PHP &gt;= 8.2
-- Laravel &gt;= 10.0
+- PHP &gt;= 7.4
+- Laravel &gt;= 8.0
 
 ## License
 
